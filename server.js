@@ -189,11 +189,11 @@ app.post('/home/pick_color', function(req, res) {
 //Team stats page
 app.post('/team_stats', function(req, res) {
   //TODO Retrieve all of the football games in the Fall 2018 Season
-  var query1 = 'select * from table_name;';
+  var query1 = 'SELECT * FROM football_games where (game_date BETWEEN '2018-06-01' AND '2019-01-01');';
 //TODO 	Count the number of winning games in the Fall 2018 Season
-var query2 = 'select * from table_name_2;';
+var query2 = 'SELECT COUNT(*) FROM football_games where home_score > visitor_score;';
 //TODO Count the number of lossing games in the Fall 2018 Season
-var query3 = 'select * from table_name_3;';
+var query3 = 'SELECT COUNT(*) FROM football_games where home_score < visitor_score;';
 db.task('get-everything', task => {
     return task.batch([
         task.any(query1),
