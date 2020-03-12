@@ -26,7 +26,20 @@
 						that ran onload for Lab 5.  We are doing the same kind of operations we had in Lab 5, but we are instead having
 						everything handled via server-side scriptes
 			-->
+			<% for(var i=0; i < data.length; i++) { %>
+   				<tr>
+                    <td><%= data[i]. game_date %></td>
+                    <td><%= data[i].visitor_name %></td>
+                    <td><%= data[i].home_score %></td>
+                    <td><%= data[i].visitor_score %></td>
 
+                    <% if(data[i].home_score < data[i].visitor_score){ %>
+                    <td><%= data[i].visitor_name %></td>
+                    <% } else{ %>  
+                    <td>CU Boulder</td>
+                    <% } %>
+   				</tr>
+			<% } %>
 		</table>
 		<br>
 		<table class="table text-center">
