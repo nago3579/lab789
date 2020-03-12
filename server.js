@@ -202,8 +202,8 @@ db.task('get-everything', task => {
     ]);
 })
 .then(data => {
-	res.render('pages/page_name',{
-			my_title: "Page Title Here",
+	res.render('pages/team_stats',{
+			my_title: "team-stats",
 			result_1: data[0],
 			result_2: data[1],
 			result_3: data[2]
@@ -212,13 +212,77 @@ db.task('get-everything', task => {
 .catch(err => {
     // display error message in case an error
         console.log('error', err);
-        res.render('pages/page_name',{
+        res.render('pages/team_stats',{
 			my_title: "Page Title Here",
 			result_1: '',
 			result_2: '',
 			result_3: ''
 		})
 });
+});
+
+app.get('/player_info', function(req, res) {
+  //select query to the football_players table which will retrieve the id & name for all of the football players.
+	var q0 = 'select * from favorite_colors;';
+  var q1 = 'select * from table_name_3;';
+  db.task('get-everything', task => {
+      return task.batch([
+          task.any(q0),
+          task.any(q1),
+      ]);
+  })
+  .then(data => {
+  	res.render('pages/player_info',{
+  			my_title: "player-info",
+  			result_1: data[0],
+  			result_2: data[1]
+  		})
+        })
+        .catch(function (err) {
+            // display error message in case an error
+            console.log('error', err);
+            response.render('pages/player_info', {
+                title: 'player-info',
+                result_1: data[0],
+          			result_2: data[1],
+            })
+        })
+});
+
+
+app.get('/player_info/select_player', function(req, res) {
+	var player_id = req.query.player_choice;
+  //TODO Retrieve the user id's & names of the football players (just like in /player_info)
+	var qu1 =  'select * from favorite_colors;';
+  //TODO Retrieve the specific football player's informatioin from the football_players table
+	var qu2 = "select color_msg from favorite_colors where hex_value = '" + color_choice + "';";
+  //TODO Retrieve the total number of football games the player has played
+  var qu3 = "select color_msg from favorite_colors where hex_value = '" + color_choice + "';";
+	db.task('get-everything', task => {
+    return task.batch([
+        task.any(qu1),
+        task.any(qu2),
+        task.any(qu3)
+    ]);
+    })
+    .then(data => {
+    	res.render('/player_info/select_player',{
+    			my_title: "select_player",
+    			re1: data[0],
+    			re2: data[1],
+    			re3: data[2]
+    		})
+    })
+    .catch(err => {
+        // display error message in case an error
+            console.log('error', err);
+            res.render('/player_info/select_player',{
+    			my_title: "select_player",
+    			re1: '',
+    			re2: '',
+    			re3: ''
+    		})
+    });
 });
 
 
