@@ -232,12 +232,7 @@ app.get('/player_info', function(req, res) {
   .then(data => {
   	res.render('pages/player_info',{
   			my_title: "player-info",
-<<<<<<< HEAD
-  			r_1: data[0],
-  			r_2: data[1]
-=======
   			result: data[0],
->>>>>>> 5985873c07983a3160aa763e6eebb957afc4968e
   		})
         })
         .catch(function (err) {
@@ -245,12 +240,7 @@ app.get('/player_info', function(req, res) {
             console.log('error', err);
             response.render('pages/player_info', {
                 title: 'player-info',
-<<<<<<< HEAD
-                r_1: data[0],
-          			r_2: data[1],
-=======
                 result: data[0],
->>>>>>> 5985873c07983a3160aa763e6eebb957afc4968e
             })
         })
 });

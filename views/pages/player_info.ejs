@@ -5,9 +5,10 @@
 		<div class="row">
 			<div class="col-4">
 				<div class="card">
-				<!-- TODO: Modify the ejs code below, to conditionally set the image_src to be from our chosen player -->
 				  <%
-				  var image_src = '../resources/img/helmet.jpg';
+				  var image_src = '
+						<% re2.img_src %>
+					';
 
 				  %>
 				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
@@ -27,31 +28,28 @@
 				<div class="table-responsive">
 					<table class="table">
 						<tr>
-							<!-- TODO: Set Player Information
-							 			If a player has been selected, fill in their information in each of the fields below.
-							 		    You'll need to calculate here the player's average rushing, receiving, and passing yards.-->
 							<th>Year</th>
-							<td>	</td>
+							<td><%= re2.year %></td>
 						</tr>
 						<tr>
 							<th>Major</th>
-							<td>	</td>
+							<td><%= re2.major %> </td>
 						</tr>
 						<tr>
 							<th>Games Played</th>
-							<td>	</td>
+							<td><%= re2.games_played %>	</td>
 						</tr>
 						<tr>
 							<td>Passing Yards: </td>
-							<td>Avg. Passing Yards: </td>
+							<td>Avg. Passing Yards: <%= re2.passing_yards %> </td>
 						</tr>
 						<tr>
 							<td>Rushing Yards: </td>
-							<td>Avg. Rushing Yards: </td>
+							<td>Avg. Rushing Yards: <%= re2.rushing_yards%></td>
 						</tr>
 						<tr>
 							<td>Receiving Yards: </td>
-							<td>Avg. Receiving Yards: </td>
+							<td>Avg. Receiving Yards: <%= re2.receiving_yards%> </td>
 						</tr>
 					</table>
 				</div>
