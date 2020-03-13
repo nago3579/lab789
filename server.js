@@ -251,9 +251,9 @@ app.get('/player_info/select_player', function(req, res) {
   //TODO Retrieve the user id's & names of the football players (just like in /player_info)
 	var qu1 =  'select id, name from football_players;';
   //TODO Retrieve the specific football player's informatioin from the football_players table
-	var qu2 = "select color_msg from favorite_colors where hex_value = '" + color_choice + "';";
+	var qu2 = "select * from football_players where id = '" + player_id + "';";
   //TODO Retrieve the total number of football games the player has played
-  var qu3 = "select color_msg from favorite_colors where hex_value = '" + color_choice + "';";
+  var qu3 = "select count(*) as totgames from football_games where football_games.players @> ARRAY[" + player_id + "];";
 	db.task('get-everything', task => {
     return task.batch([
         task.any(qu1),
