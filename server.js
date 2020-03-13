@@ -240,8 +240,7 @@ app.get('/player_info', function(req, res) {
             console.log('error', err);
             response.render('pages/player_info', {
                 title: 'player-info',
-                result_1: data[0],
-          			result_2: data[1],
+                result: data[0],
             })
         })
 });
