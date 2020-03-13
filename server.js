@@ -234,8 +234,8 @@ app.get('/player_info', function(req, res) {
   .then(data => {
   	res.render('pages/player_info',{
   			my_title: "player-info",
-  			result_1: data[0],
-  			result_2: data[1]
+  			r_1: data[0],
+  			r_2: data[1]
   		})
         })
         .catch(function (err) {
@@ -243,8 +243,8 @@ app.get('/player_info', function(req, res) {
             console.log('error', err);
             response.render('pages/player_info', {
                 title: 'player-info',
-                result_1: data[0],
-          			result_2: data[1],
+                r_1: data[0],
+          			r_2: data[1],
             })
         })
 });

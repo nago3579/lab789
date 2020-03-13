@@ -6,18 +6,18 @@
 			<div class="col-4">
 				<div class="card">
 				<!-- TODO: Modify the ejs code below, to conditionally set the image_src to be from our chosen player -->
-				  <% 
+				  <%
 				  var image_src = '../resources/img/helmet.jpg';
-				  
+
 				  %>
 				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
 				  <div class="card-body mx-auto">
 					<form class="form"action="/player_info/post" method="get">
 						<select class="custom-select" name="player_choice" onchange="this.form.submit()">
 							 <option selected>Select Player</option>
-							 <!-- TODO: Populate our select with player options
-							 			For each player, set a new option with a value matching the palyer's id, 
-							 			but will display the player's name-->
+										<% for (var i = 0; i < result.length; i++ ) { %>
+											<option value="<%= result.id %>"> <%= result.name %></option>
+										<% } %>
 						</select>
 					</form>
 				  </div>
@@ -58,5 +58,5 @@
 			</div>
 		</div>
 	</div>
-  
+
 <% include ../partials/footer %>
