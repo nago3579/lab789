@@ -223,19 +223,21 @@ db.task('get-everything', task => {
 
 app.get('/player_info', function(req, res) {
   //select query to the football_players table which will retrieve the id & name for all of the football players.
-	var q0 = 'select * from favorite_colors;';
-  var q1 = 'select * from table_name_3;';
+  var q0 = 'select id, name from football_players;';
   db.task('get-everything', task => {
       return task.batch([
-          task.any(q0),
-          task.any(q1),
+          task.any(q0)
       ]);
   })
   .then(data => {
   	res.render('pages/player_info',{
   			my_title: "player-info",
+<<<<<<< HEAD
   			r_1: data[0],
   			r_2: data[1]
+=======
+  			result: data[0],
+>>>>>>> 5985873c07983a3160aa763e6eebb957afc4968e
   		})
         })
         .catch(function (err) {
@@ -243,8 +245,12 @@ app.get('/player_info', function(req, res) {
             console.log('error', err);
             response.render('pages/player_info', {
                 title: 'player-info',
+<<<<<<< HEAD
                 r_1: data[0],
           			r_2: data[1],
+=======
+                result: data[0],
+>>>>>>> 5985873c07983a3160aa763e6eebb957afc4968e
             })
         })
 });
@@ -253,7 +259,7 @@ app.get('/player_info', function(req, res) {
 app.get('/player_info/select_player', function(req, res) {
 	var player_id = req.query.player_choice;
   //TODO Retrieve the user id's & names of the football players (just like in /player_info)
-	var qu1 =  'select * from favorite_colors;';
+	var qu1 =  'select id, name from football_players;';
   //TODO Retrieve the specific football player's informatioin from the football_players table
 	var qu2 = "select color_msg from favorite_colors where hex_value = '" + color_choice + "';";
   //TODO Retrieve the total number of football games the player has played
